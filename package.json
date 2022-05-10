@@ -15,6 +15,7 @@
     "vite": "^2.9.8"
   },
   "dependencies": {
+    "@vueuse/core": "^7.7.1",
     "vue": "^3.2.33"
   }
 }

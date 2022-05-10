@@ -1,0 +1,10 @@
+@import './themes/discord-dark.scss';
+
+body {
+  margin: 0;
+  color: var(--color);
+  background-color: var(--bgcolor);
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
