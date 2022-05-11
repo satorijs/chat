@@ -1,0 +1,9 @@
+name: en
+
+menubar:
+  theme: theme
+  language: language
+
+themes:
+  discord-dark: Discord Dark
+  discord-light: Discord Light

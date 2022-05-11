@@ -18,14 +18,13 @@ $nav-height: 3rem;
 $aside-width: 20rem;
 
 nav {
-  height: $nav-height;
   color: var(--nav-color);
   background-color: var(--nav-bgcolor);
-  position: relative;
-  display: flex;
-  align-items: center;
-  min-width: 0;
-  width: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: $nav-height;
   line-height: 1.25rem;
   font-weight: 500;
 }

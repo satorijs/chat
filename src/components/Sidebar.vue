@@ -35,6 +35,7 @@ ul {
 $avatar-size: 3rem;
 
 .character {
+  user-select: none;
   overflow-x: hidden;
   position: relative;
   display: grid;
