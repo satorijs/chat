@@ -1,28 +1,14 @@
 <template>
-  <nav>
-    Satori Chat
-    {{ mode }}
-  </nav>
-  <aside></aside>
+  <Navbar></Navbar>
+  <Sidebar></Sidebar>
   <Main></Main>
 </template>
 
 <script setup lang="ts">
 
-import { useColorMode } from '@vueuse/core'
+import Navbar from './components/Navbar.vue'
+import Sidebar from './components/Sidebar.vue'
 import Main from './components/Main.vue'
-
-const mode = useColorMode({
-  storageKey: 'satori-chat-theme',
-  modes: {
-    'discord-dark': 'discord-dark',
-    'discord-light': 'discord-light',
-  },
-})
-
-if (['dark', 'light'].includes(mode.value)) {
-  mode.value = 'discord-' + mode.value as any
-}
 
 </script>
 

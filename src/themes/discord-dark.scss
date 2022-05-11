@@ -1,12 +1,31 @@
 html.discord-dark {
-  --color: #DCDDDE;
-  --bgcolor: #36393F;
+  --header-primary: #ffffff;
+  --header-secondary: #b9bbbe;
+  --text-normal: #dcddde;
+  --text-muted: #a3a6aa;
+
+  --background-primary: #36393f;
+  --background-secondary: #2f3136;
+  --background-secondary-alt: #292b2f;
+  --background-tertiary: #202225;
+  --background-accent: #4f545c;
+  --background-floating: #18191c;
+  --background-nested-floating: #2f3136;
+
+  --background-modifier-hover: rgba(79, 84, 92, 0.4);
+  --background-modifier-active: rgba(79, 84, 92, 0.6);
+  --background-modifier-selected: rgba(79, 84, 92, 0.6);
+  --background-modifier-accent: rgba(79, 84, 92, 0.48);
+
+  --color: var(--text-normal);
+  --bgcolor: var(--background-primary);
 
   --nav-color: var(--color);
-  --nav-bgcolor: #202225; // ?
+  --nav-bgcolor: var(--background-tertiary);
 
-  --menu-bgcolor: #202225;
   --side-bgcolor: #2F3136;
+  --side-hover-bgcolor: var(--background-modifier-hover);
+  --side-active-bgcolor: var(--background-modifier-active);
 
   --main-bgcolor: var(--bgcolor);
   --main-hover-bgcolor: #33353A;
