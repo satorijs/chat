@@ -27,10 +27,11 @@ html.discord-dark {
   --side-hover-bgcolor: var(--background-modifier-hover);
   --side-active-bgcolor: var(--background-modifier-active);
 
-  --main-bgcolor: var(--bgcolor);
-  --main-hover-bgcolor: #33353A;
+  --message-bgcolor: var(--bgcolor);
+  --message-hover-bgcolor: #33353A;
+  --message-nickname-color: var(--header-primary);
 
-  --input-bgcolor: #40444B;
-  --input-icon-color: #B9BBBE;
-  --input-icon-hover-color: #FFFFFF;
+  --textarea-bgcolor: #40444B;
+  --textarea-icon-color: #B9BBBE;
+  --textarea-icon-hover-color: #FFFFFF;
 }

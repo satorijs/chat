@@ -2,13 +2,11 @@
   <aside>
     <el-scrollbar class="body">
       <ul>
-        <li class="char" v-for="char in chars">
-          <label>
-            <img class="avatar" :src="'/blue-archive/characters/' + char.images[0] + '.webp'" :alt="char.id">
-            <div class="info">
-              <div class="name">{{ char.id }}</div>
-            </div>
-          </label>
+        <li class="character" :class="{ active: currentUser === char.id }" v-for="char in characters" @click="currentUser = char.id">
+          <img class="avatar" :src="char.images[0]" :alt="char.id">
+          <div class="info">
+            <div class="name">{{ char.id }}</div>
+          </div>
         </li>
       </ul>
     </el-scrollbar>
@@ -17,16 +15,8 @@
 
 <script setup lang="ts">
 
-import { onMounted, reactive } from 'vue'
 import { ElScrollbar } from 'element-plus'
-
-const chars = reactive<any[]>([])
-
-onMounted(async () => {
-  const response = await fetch('/blue-archive/index.json')
-  const data = await response.json()
-  chars.push(...data)
-})
+import { characters, currentUser } from '../utils'
 
 </script>
 
@@ -42,14 +32,10 @@ ul {
   list-style: none;
 }
 
-.char {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
 $avatar-size: 3rem;
 
-label {
+.character {
+  overflow-x: hidden;
   position: relative;
   display: grid;
   grid-template-columns: $avatar-size 1fr $avatar-size;
@@ -60,6 +46,10 @@ label {
 
   &:hover {
     background-color: var(--side-hover-bgcolor);
+  }
+
+  &.active {
+    background-color: var(--side-active-bgcolor);
   }
 
   .avatar {
