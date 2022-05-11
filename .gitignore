@@ -1,6 +1,7 @@
 lib
 dist
 temp
+extensions
 
 todo.md
 yarn.lock

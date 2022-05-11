@@ -19,7 +19,7 @@ function sendMessage(content: string) {
   const author = characters[currentUser.value]
   if (!author) return
   messages.push({
-    user: author.id,
+    user: author.names[0],
     avatar: author.images[0],
     content,
   })

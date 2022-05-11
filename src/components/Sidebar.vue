@@ -2,10 +2,10 @@
   <aside>
     <el-scrollbar class="body">
       <ul>
-        <li class="character" :class="{ active: currentUser === char.id }" v-for="char in characters" @click="currentUser = char.id">
-          <img class="avatar" :src="char.images[0]" :alt="char.id">
+        <li class="character" :class="{ active: currentUser === key }" v-for="(char, key) in characters" :key="key" @click="currentUser = key">
+          <img class="avatar" :src="char.images[0]" :alt="key">
           <div class="info">
-            <div class="name">{{ char.id }}</div>
+            <div class="name">{{ getName(char.names) }}</div>
           </div>
         </li>
       </ul>
@@ -16,7 +16,14 @@
 <script setup lang="ts">
 
 import { ElScrollbar } from 'element-plus'
-import { characters, currentUser } from '../utils'
+import { useI18n } from 'vue-i18n'
+import { characters, currentUser, Dict } from '../utils'
+
+const i18n = useI18n()
+
+function getName(names: Dict<string>) {
+  return names[i18n.locale.value] || names['en']
+}
 
 </script>
 
