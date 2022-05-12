@@ -11,7 +11,10 @@
 import { reactive } from 'vue'
 import { ChatPanel } from 'semisigure'
 import { currentUser, characters, Message } from '../utils'
+import { useI18n } from 'vue-i18n'
 import ChatMessage from './Message.vue'
+
+const i18n = useI18n()
 
 const messages = reactive<Message[]>([])
 
@@ -19,8 +22,8 @@ function sendMessage(content: string) {
   const author = characters[currentUser.value]
   if (!author) return
   messages.push({
-    user: author.names[0],
-    avatar: author.images[0],
+    user: author.nickname[i18n.locale.value] ?? author.nickname.en,
+    avatar: author.avatars[0],
     content,
   })
 }

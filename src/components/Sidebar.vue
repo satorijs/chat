@@ -3,9 +3,9 @@
     <el-scrollbar class="body">
       <ul>
         <li class="character" :class="{ active: currentUser === key }" v-for="(char, key) in characters" :key="key" @click="currentUser = key">
-          <img class="avatar" :src="char.images[0]" :alt="key">
+          <img class="avatar" :src="char.avatars[0]" :alt="key">
           <div class="info">
-            <div class="name">{{ getName(char.names) }}</div>
+            <div class="name">{{ getName(char.name) }}</div>
           </div>
         </li>
       </ul>

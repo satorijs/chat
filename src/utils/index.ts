@@ -1,5 +1,4 @@
 import { reactive, ref } from 'vue'
-import baChars from '@satori-chat/blue-archive/index.yaml'
 
 export type Dict<T> = Record<string, T>
 
@@ -10,8 +9,9 @@ export interface Message {
 }
 
 export interface Character {
-  images: string[]
-  names: Dict<string>
+  avatars: string[]
+  name: Dict<string>
+  nickname: Dict<string>
 }
 
 export interface Manifest {
@@ -20,19 +20,22 @@ export interface Manifest {
   characters: Dict<Character>
 }
 
+export const currentUser = ref('')
+
 export const characters = reactive<Dict<Character>>({})
 
-function loadManifest(manifest: Manifest) {
-  const { id } = manifest
+async function loadManifest(url: string) {
+  const response = await fetch(url + '/index.json')
+  const manifest: Manifest = await response.json()
   for (const key in manifest.characters) {
     const data = manifest.characters[key]
-    characters[id + '.' + key] = {
+    characters[key] = {
       ...data,
-      images: data.images.map((image) => `/characters/${id}/${image}.webp`),
+      avatars: data.avatars.map(name => `${url}/characters/${name}`),
     }
   }
 }
 
-loadManifest(baChars)
-
-export const currentUser = ref('')
+[
+  'https://satori.js.org/extensions/blue-archive',
+].forEach(loadManifest)
