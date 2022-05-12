@@ -1,0 +1,9 @@
+name: 日本語
+
+menubar:
+  theme: テーマ
+  language: 言語
+
+themes:
+  discord-dark: Discord ダーク
+  discord-light: Discord ライト

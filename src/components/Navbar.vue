@@ -2,36 +2,43 @@
   <nav>
     <h1>Satori Chat</h1>
     <div class="menubar">
-      <span @click="locale.next()">{{ $t('menubar.language') }}: {{ $t('name') }}</span>
-      <span @click="theme.next()">{{ $t('menubar.theme') }}: {{ mode }}</span>
+      <span @click="localeCycle.next()">{{ $t('menubar.language') }}: {{ $t('name') }}</span>
+      <span @click="themeCycle.next()">{{ $t('menubar.theme') }}: {{ $t('themes.' + theme) }}</span>
     </div>
   </nav>
 </template>
 
 <script setup lang="ts">
 
-import { useColorMode, useCycleList } from '@vueuse/core'
+import { useColorMode, useCycleList, useStorage } from '@vueuse/core'
+import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const i18n = useI18n()
 
-const locale = useCycleList(i18n.availableLocales, {
-  initialValue: i18n.locale,
+const locale = useStorage('satori-chat-locale', 'en')
+
+watch(locale, (value) => {
+  i18n.locale.value = value
+}, { immediate: true })
+
+const localeCycle = useCycleList(i18n.availableLocales, {
+  initialValue: locale,
 })
 
-const themes = ['discord-dark', 'discord-light']
+const availableThemes = ['discord-dark', 'discord-light']
 
-const mode = useColorMode({
+const theme = useColorMode({
   storageKey: 'satori-chat-theme',
-  modes: Object.fromEntries(themes.map((theme) => [theme, theme])),
+  modes: Object.fromEntries(availableThemes.map((theme) => [theme, theme])),
 })
 
-if (['dark', 'light'].includes(mode.value)) {
-  mode.value = 'discord-' + mode.value
+if (['dark', 'light'].includes(theme.value)) {
+  theme.value = 'discord-' + theme.value
 }
 
-const theme = useCycleList(themes, {
-  initialValue: mode,
+const themeCycle = useCycleList(availableThemes, {
+  initialValue: theme,
 })
 
 </script>
