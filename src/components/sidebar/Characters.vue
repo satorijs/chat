@@ -14,7 +14,7 @@
 
 import { useI18n } from 'vue-i18n'
 import { VirtualList } from 'semisigure'
-import { Character, characters, currentUser, getTranslation } from '../utils'
+import { Character, characters, currentUser, getTranslation } from '../../utils'
 
 const i18n = useI18n()
 

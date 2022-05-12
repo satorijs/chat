@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav class="title-bar">
     <h1>Satori Chat</h1>
     <div class="menubar">
       <span @click="localeCycle.next()">{{ $t('menubar.language') }}: {{ $t('name') }}</span>
