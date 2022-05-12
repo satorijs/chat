@@ -1,33 +1,34 @@
 <template>
   <aside>
-    <el-scrollbar class="body">
-      <ul>
-        <li class="character" :class="{ active: currentUser === key }" v-for="(char, key) in characters" :key="key" @click="currentUser = key">
-          <img class="avatar" :src="char.avatars[0]" :alt="key">
-          <div class="info">
-            <div class="name">{{ getName(char.name) }}</div>
-          </div>
-        </li>
-      </ul>
-    </el-scrollbar>
+    <virtual-list class="body" wrapper-tag="ul" :data="Object.values(characters)"
+      item-tag="li" :item-class="getItemClass" @item-click="handleClick" #="char">
+      <img class="avatar" :src="char.avatars[0]" :alt="char.id">
+      <div class="info">
+        <div class="name">{{ getTranslation(char.name, i18n) }}</div>
+      </div>
+    </virtual-list>
   </aside>
 </template>
 
 <script setup lang="ts">
 
-import { ElScrollbar } from 'element-plus'
 import { useI18n } from 'vue-i18n'
-import { characters, currentUser, Dict } from '../utils'
+import { VirtualList } from 'semisigure'
+import { Character, characters, currentUser, getTranslation } from '../utils'
 
 const i18n = useI18n()
 
-function getName(names: Dict<string>) {
-  return names[i18n.locale.value] || names['en']
+function getItemClass(char: Character) {
+  return (currentUser.value === char.id ? 'active ' : '') + 'character'
+}
+
+function handleClick(char: Character) {
+  currentUser.value = char.id
 }
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 
 .body {
   height: 100%;

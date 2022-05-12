@@ -21,6 +21,7 @@
   "dependencies": {
     "@vueuse/core": "^7.7.1",
     "element-plus": "^2.1.11",
+    "semisigure": "^0.2.0",
     "vue": "^3.2.33",
     "vue-i18n": "^9.1.10"
   }
