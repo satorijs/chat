@@ -4,6 +4,6 @@ menubar:
   theme: テーマ
   language: 言語
 
-themes:
+theme:
   discord-dark: Discord ダーク
   discord-light: Discord ライト

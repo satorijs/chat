@@ -3,7 +3,7 @@
     <h1>Satori Chat</h1>
     <div class="menubar">
       <span @click="localeCycle.next()">{{ $t('menubar.language') }}: {{ $t('name') }}</span>
-      <span @click="themeCycle.next()">{{ $t('menubar.theme') }}: {{ $t('themes.' + theme) }}</span>
+      <span @click="themeCycle.next()">{{ $t('menubar.theme') }}: {{ $t('theme.' + theme) }}</span>
     </div>
   </nav>
 </template>

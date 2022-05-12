@@ -4,6 +4,9 @@ menubar:
   theme: theme
   language: language
 
-themes:
+theme:
   discord-dark: Discord Dark
   discord-light: Discord Light
+
+segment:
+  unknown: unknown

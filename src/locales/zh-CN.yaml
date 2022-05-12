@@ -4,6 +4,9 @@ menubar:
   theme: 主题
   language: 语言
 
-themes:
+theme:
   discord-dark: Discord Dark
   discord-light: Discord Light
+
+segment:
+  unknown: 未知

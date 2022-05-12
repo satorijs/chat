@@ -2,7 +2,9 @@
   <img class="avatar" :src="data.avatar">
   <div class="nickname">{{ data.user }}</div>
   <div class="message-box">
-    <message-content :content="data.content"/>
+    <message-content :content="data.content">
+      <template #default>[{{ $t('segment.unknown') }}]</template>
+    </message-content>
   </div>
 </template>
 
