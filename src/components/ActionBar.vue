@@ -1,23 +1,23 @@
 <template>
   <div class="action-bar">
     <ul>
-      <Tooltip placement="right" :content="$t('menubar.characters')">
+      <Tooltip :content="$t('menubar.characters')">
         <li><AddressBook></AddressBook></li>
       </Tooltip>
-      <Tooltip placement="right" :content="$t('menubar.archives')">
+      <Tooltip :content="$t('menubar.archives')">
         <li><Inbox></Inbox></li>
       </Tooltip>
-      <Tooltip placement="right" :content="$t('menubar.extensions')">
+      <Tooltip :content="$t('menubar.extensions')">
         <li><Cubes></Cubes></li>
       </Tooltip>
     </ul>
     <ul>
-      <Tooltip placement="right" :content="$t('menubar.help')">
+      <Tooltip :content="$t('menubar.help')">
         <li><CircleQuestion></CircleQuestion></li>
       </Tooltip>
-      <Dropdown placement="right">
+      <Dropdown>
         <template #default>
-          <Tooltip placement="right" :content="$t('menubar.language')">
+          <Tooltip :content="$t('menubar.language')">
             <li><Globe></Globe></li>
           </Tooltip>
         </template>
@@ -27,9 +27,9 @@
           </div>
         </template>
       </Dropdown>
-      <Dropdown placement="right">
+      <Dropdown>
         <template #default>
-          <Tooltip placement="right" :content="$t('menubar.theme')">
+          <Tooltip :content="$t('menubar.theme')">
             <li><Palette></Palette></li>
           </Tooltip>
         </template>
@@ -39,7 +39,7 @@
           </div>
         </template>
       </Dropdown>
-      <Tooltip placement="right" :content="$t('menubar.repository')">
+      <Tooltip :content="$t('menubar.repository')">
         <li @click="openRepository"><GitHub></GitHub></li>
       </Tooltip>
     </ul>
@@ -55,10 +55,13 @@ import Globe from '../icons/Globe.vue'
 import Palette from '../icons/Palette.vue'
 import GitHub from '../icons/GitHub.vue'
 import CircleQuestion from '../icons/CircleQuestion.vue'
-import { Dropdown, Tooltip } from '@satorijs/ui-core'
+import { Dropdown, injections, Tooltip } from '@satorijs/ui-popper'
 import { useColorMode, useStorage } from '@vueuse/core'
-import { watch } from 'vue'
+import { provide, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+
+provide(injections.placement, 'right')
+provide(injections.teleport, '#poppers')
 
 const i18n = useI18n()
 
@@ -113,7 +116,7 @@ li {
   margin: 2px 0;
   box-sizing: border-box;
   min-height: 2rem;
-  min-width: 10rem;
+  min-width: 12.5rem;
   border-radius: 2px;
   font-size: 14px;
   font-weight: 500;

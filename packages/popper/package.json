@@ -1,5 +1,5 @@
 {
-  "name": "@satorijs/ui-core",
+  "name": "@satorijs/ui-popper",
   "description": "Universal Chat UI Component",
   "version": "0.2.1",
   "main": "src/index.ts",

@@ -1,8 +1,8 @@
 <template>
-  <virtual-item :ref="setRef">
+  <div ref="trigger">
     <slot></slot>
-  </virtual-item>
-  <teleport to="body">
+  </div>
+  <teleport :to="target">
     <transition :name="transition">
       <div class="popper" v-if="active && $slots.content" ref="popper">
         <slot name="content"></slot>
@@ -14,9 +14,9 @@
 
 <script lang="ts" setup>
 
-import VirtualItem from './item'
 import { createPopper, Placement } from '@popperjs/core'
-import { ref, watch } from 'vue'
+import { inject, ref, watch } from 'vue'
+import { injections } from './shared'
 
 const props = defineProps<{
   placement?: Placement
@@ -31,15 +31,14 @@ const emit = defineEmits(['show', 'hide'])
 const trigger = ref<HTMLElement>(null)
 const popper = ref<HTMLElement>(null)
 
-function setRef(ref: any) {
-  trigger.value = ref?.$el
-}
+const target = inject(injections.teleport, 'body')
+const placement = inject(injections.placement)
 
 watch(popper, (el) => {
   emit(el ? 'show' : 'hide', el)
   if (!el) return
   const instance = createPopper(trigger.value, el, {
-    placement: props.placement,
+    placement: props.placement ?? placement,
     modifiers: [{
       name: 'offset',
       options: {

@@ -17,7 +17,7 @@
 <script setup lang="ts">
 
 import { useI18n } from 'vue-i18n'
-import { VirtualList } from '@satorijs/ui-core'
+import { VirtualList } from '@satorijs/ui-virtual'
 import { characters, currentUser, extensions, getTranslation } from '../../utils'
 
 const i18n = useI18n()
