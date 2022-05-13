@@ -4,7 +4,7 @@
   </virtual-item>
   <teleport to="body">
     <transition :name="transition">
-      <div class="popper" v-if="active" ref="popper">
+      <div class="popper" v-if="active && $slots.content" ref="popper">
         <slot name="content"></slot>
         <div v-if="arrow" class="arrow"></div>
       </div>
@@ -76,6 +76,7 @@ defineExpose({
 
 .popper {
   z-index: 10;
+  user-select: none;
   background-color: var(--background-floating);
   box-shadow: var(--elevation-high);
   padding: 0.375rem 0.5rem;

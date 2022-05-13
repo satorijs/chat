@@ -17,6 +17,11 @@ html.discord-dark {
   --background-modifier-selected: rgba(79, 84, 92, 0.6);
   --background-modifier-accent: rgba(79, 84, 92, 0.48);
 
+  --elevation-stroke: 0 0 0 1px rgba(4,4,5,0.15);
+  --elevation-low: 0 1px 0 rgba(4,4,5,0.2),0 1.5px 0 rgba(6,6,7,0.05),0 2px 0 rgba(4,4,5,0.05);
+  --elevation-medium: 0 4px 4px rgba(0,0,0,0.16);
+  --elevation-high: 0 8px 16px rgba(0,0,0,0.24);
+
   --color: var(--text-normal);
   --bgcolor: var(--background-primary);
 
@@ -34,4 +39,10 @@ html.discord-dark {
   --textarea-bgcolor: #40444B;
   --textarea-icon-color: #B9BBBE;
   --textarea-icon-hover-color: #FFFFFF;
+  
+  --header-color: var(--header-primary);
+  --header-shadow: var(--elevation-low);
+  --header-hover-bgcolor: var(--background-modifier-hover);
+
+  --menu-hover-bgcolor: #4854bd;
 }

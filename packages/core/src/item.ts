@@ -20,12 +20,11 @@ function findFirstLegitChild(node: VNode[]): VNode {
         case Comment:
           continue
         case Text:
-          return h('span', child)
-        case 'svg':
-          return h('span', child)
+          break
         case Fragment:
           return findFirstLegitChild(child.children as VNode[])
         default:
+          if (typeof child.type === 'string') return child
           return child
       }
     }
@@ -33,7 +32,7 @@ function findFirstLegitChild(node: VNode[]): VNode {
   }
 }
 
-export default defineComponent({
+const VirtualItem = defineComponent({
   props: {
     class: {},
   },
@@ -66,3 +65,5 @@ export default defineComponent({
     }
   },
 })
+
+export default VirtualItem
