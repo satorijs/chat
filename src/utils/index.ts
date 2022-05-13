@@ -7,7 +7,7 @@ export interface Message {
   user: string
   avatar?: string
   content: string
-  messageId: string
+  id: string
 }
 
 export interface Character {
@@ -15,11 +15,13 @@ export interface Character {
   avatars: string[]
   name: Dict<string>
   nickname: Dict<string>
+  tags?: []
 }
 
 export interface Manifest {
   base?: string
   name: Dict<string>
+  tags: Dict<Dict<string>>
   characters: Dict<Character>
 }
 
@@ -29,6 +31,7 @@ export function getTranslation(name: Dict<string>, i18n: Composer<any, any, any>
 
 export const currentUser = ref('')
 
+export const extensions = reactive<Manifest[]>([])
 export const characters = reactive<Dict<Character>>({})
 
 function randomId() {
@@ -39,10 +42,12 @@ async function loadManifest(url: string) {
   const prefix = randomId() + ':'
   const response = await fetch(url + '/index.json')
   const manifest: Manifest = await response.json()
+  extensions.push(manifest)
   const { base = url + '/characters/' } = manifest
   for (const key in manifest.characters) {
     const data = manifest.characters[key]
     characters[prefix + data.id] = {
+      tags: [],
       ...data,
       id: prefix + data.id,
       avatars: data.avatars.map(name => base + name),

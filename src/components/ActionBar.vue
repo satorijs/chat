@@ -5,7 +5,7 @@
         <li><AddressBook></AddressBook></li>
       </Tooltip>
       <Tooltip placement="right" :content="$t('menubar.archives')">
-        <li><ClockRotateLeft></ClockRotateLeft></li>
+        <li><Inbox></Inbox></li>
       </Tooltip>
       <Tooltip placement="right" :content="$t('menubar.extensions')">
         <li><Cubes></Cubes></li>
@@ -49,7 +49,7 @@
 <script lang="ts" setup>
 
 import AddressBook from '../icons/AddressBook.vue'
-import ClockRotateLeft from '../icons/ClockRotateLeft.vue'
+import Inbox from '../icons/Inbox.vue'
 import Cubes from '../icons/Cubes.vue'
 import Globe from '../icons/Globe.vue'
 import Palette from '../icons/Palette.vue'

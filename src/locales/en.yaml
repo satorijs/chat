@@ -1,8 +1,14 @@
 name: English
 
 menubar:
-  theme: theme
-  language: language
+  characters: Characters
+  archives: Archives
+  extensions: Extensions
+
+  help: Help
+  theme: Theme
+  language: Language
+  repository: Source Code
 
 theme:
   discord-dark: Discord Dark
@@ -10,3 +16,6 @@ theme:
 
 segment:
   unknown: unknown
+
+chat:
+  title: Message History

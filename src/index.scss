@@ -10,7 +10,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+header {
+  user-select: none;
+  font-weight: 500;
+  height: 3rem;
+  padding: 0 1rem;
+  flex-shrink: 0;
+  color: var(--header-color);
+  box-shadow: var(--header-shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &.clickable {
+    cursor: pointer;
+
+    &:hover, &.active {
+      background-color: var(--header-hover-bgcolor);
+    }
+  }
+}
+
 svg.icon {
   height: 1em;
-  width: 1em;
+  max-width: 1.125em;;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter, .fade-leave {
+  opacity: 1;
 }

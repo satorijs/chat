@@ -1,18 +1,30 @@
 <template>
   <main>
-    <chat-panel class="chat-panel" :messages="messages" @send="sendMessage" #="data">
+    <header>
+      <div>{{ $t('chat.title') }}</div>
+      <div class="toolbar">
+        <Camera></Camera>
+      </div>
+    </header>
+    <virtual-list class="chat-panel" :data="messages" :pinned="true" #="data">
       <chat-message :data="data"></chat-message>
-    </chat-panel>
+    </virtual-list>
+    <footer>
+      <chat-input class="textarea" @send="sendMessage">
+      </chat-input>
+    </footer>
   </main>
 </template>
 
 <script setup lang="ts">
 
 import { reactive } from 'vue'
-import { ChatPanel } from 'semisigure'
+import { VirtualList } from '@satorijs/ui-core'
+import { ChatInput } from '@satorijs/ui-chat'
 import { currentUser, characters, getTranslation, Message } from '../utils'
 import { useI18n } from 'vue-i18n'
 import ChatMessage from './Message.vue'
+import Camera from '../icons/Camera.vue'
 
 const i18n = useI18n()
 
@@ -25,37 +37,40 @@ function sendMessage(content: string) {
     user: getTranslation(author.nickname, i18n),
     avatar: author.avatars[0],
     content,
-    messageId: Math.random().toString(36).substring(2),
+    id: Math.random().toString(36).substring(2),
   })
 }
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 main {
   background-color: var(--main-bgcolor);
-}
+  display: flex;
+  flex-direction: column;
 
-.chat-panel {
-  footer {
-    position: relative;
-    flex-shrink: 0;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .textarea {
-    border-radius: 8px;
-    padding: 12px 16px;
-    background-color: var(--textarea-bgcolor);
+  header {
+    .toolbar {
+      font-size: 1.125rem;
+      display: flex;
+      align-items: center;
+    }
   }
 }
 
-.chat-message {
-  &:hover {
-    background-color: var(--message-hover-bgcolor);
-  }
+footer {
+  position: relative;
+  flex-shrink: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.textarea {
+  border-radius: 8px;
+  margin-bottom: 24px;
+  padding: 12px 16px;
+  background-color: var(--textarea-bgcolor);
 }
 
 </style>
