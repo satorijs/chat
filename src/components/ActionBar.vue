@@ -1,22 +1,28 @@
 <template>
   <div class="action-bar">
     <ul>
-      <li><AddressBook></AddressBook></li>
-      <li><ClockRotateLeft></ClockRotateLeft></li>
-      <li><Cubes></Cubes></li>
+      <Tooltip placement="right" :content="$t('menubar.characters')">
+        <li><AddressBook></AddressBook></li>
+      </Tooltip>
+      <Tooltip placement="right" :content="$t('menubar.archives')">
+        <li><ClockRotateLeft></ClockRotateLeft></li>
+      </Tooltip>
+      <Tooltip placement="right" :content="$t('menubar.extensions')">
+        <li><Cubes></Cubes></li>
+      </Tooltip>
     </ul>
     <ul>
-      <Tooltip placement="right" :content="$t('menubar.help')" :offset="10">
+      <Tooltip placement="right" :content="$t('menubar.help')">
         <li><CircleQuestion></CircleQuestion></li>
       </Tooltip>
-      <Tooltip placement="right" :content="$t('menubar.language')" :offset="10">
+      <Tooltip placement="right" :content="$t('menubar.language')">
         <li><Globe></Globe></li>
       </Tooltip>
-      <Tooltip placement="right" :content="$t('menubar.theme')" :offset="10">
+      <Tooltip placement="right" :content="$t('menubar.theme')">
         <li><Palette></Palette></li>
       </Tooltip>
-      <Tooltip placement="right" :content="$t('menubar.repository')" :offset="10">
-        <li><GitHub></GitHub></li>
+      <Tooltip placement="right" :content="$t('menubar.repository')">
+        <li @click="openRepository"><GitHub></GitHub></li>
       </Tooltip>
     </ul>
   </div>
@@ -55,6 +61,10 @@ if (['dark', 'light'].includes(theme.value)) {
   theme.value = 'discord-' + theme.value
 }
 
+function openRepository() {
+  window.open('https://github.com/satorijs/chat', '_blank')
+}
+
 </script>
 
 <style lang="scss" scoped>
@@ -77,6 +87,7 @@ li {
   height: 4rem;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 </style>

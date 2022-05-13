@@ -53,6 +53,7 @@ export default defineComponent({
     })
 
     function dispatchSizeChange() {
+      if (!root.value) return
       const marginTop = +(getComputedStyle(root.value).marginTop.slice(0, -2))
       emit('resize', root.value.offsetHeight + marginTop)
     }
