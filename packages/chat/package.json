@@ -28,7 +28,6 @@
     "vue": "^3.2.33"
   },
   "dependencies": {
-    "@koishijs/segment": "^1.1.1",
-    "@satorijs/ui-core": "^0.2.1"
+    "@koishijs/segment": "^1.1.1"
   }
 }

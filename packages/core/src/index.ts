@@ -1,4 +1,5 @@
-import VirtualItem from './item.ts'
+import VirtualItem from './item'
 import VirtualList from './list.vue'
+import Tooltip from './tooltip.vue'
 
-export { VirtualItem, VirtualList }
+export { VirtualItem, VirtualList, Tooltip }

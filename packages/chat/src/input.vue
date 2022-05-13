@@ -4,7 +4,7 @@
       autocomplete="off"
       step="any"
       :value="text"
-      @input="text = $event.target['value']"
+      @input="onInput"
       @paste="onPaste"
       @keydown.enter.stop="onEnter"
     />
@@ -24,6 +24,10 @@ function onEnter() {
   if (!text.value) return
   emit('send', text.value)
   text.value = ''
+}
+
+function onInput(event: Event) {
+  text.value = (event.target as HTMLInputElement).value
 }
 
 async function onPaste(event: ClipboardEvent) {

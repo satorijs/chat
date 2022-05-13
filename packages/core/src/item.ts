@@ -60,7 +60,7 @@ export default defineComponent({
     const directive = useRefDirective(root)
 
     return () => {
-      const head = findFirstLegitChild(slots.default?.())
+      const head = findFirstLegitChild(slots.default?.(attrs))
       return withDirectives(head, [[directive]])
     }
   },
