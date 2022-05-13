@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base",
+  "compilerOptions": {
+    "rootDir": ".",
+    "strictNullChecks": false,
+  },
+  "include": [
+    "src",
+    "../../global.d.ts",
+  ],
+}
