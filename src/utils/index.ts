@@ -19,6 +19,7 @@ export interface Character {
 }
 
 export interface Manifest {
+  url?: string
   base?: string
   name: Dict<string>
   tags: Dict<Dict<string>>
@@ -43,6 +44,7 @@ async function loadManifest(url: string) {
   const response = await fetch(url + '/index.json')
   const manifest: Manifest = await response.json()
   extensions.push(manifest)
+  manifest.url = url
   const { base = url + '/characters/' } = manifest
   for (const key in manifest.characters) {
     const data = manifest.characters[key]
@@ -56,6 +58,6 @@ async function loadManifest(url: string) {
 }
 
 [
-  'https://satori.js.org/extensions/blue-archive',
+  'https://satori.js.org/extensions/ba',
   'https://satori.js.org/extensions/pcr',
 ].forEach(loadManifest)
