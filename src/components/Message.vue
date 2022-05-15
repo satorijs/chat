@@ -13,7 +13,7 @@
 <script lang="ts" setup>
 
 import { Message } from '../utils'
-import { MessageContent } from '@satorijs/ui-chat'
+import { MessageContent } from '@satorijs/components'
 
 defineProps<{ data: Message }>()
 

@@ -19,8 +19,7 @@
 <script setup lang="ts">
 
 import { reactive } from 'vue'
-import { ChatInput } from '@satorijs/ui-chat'
-import { VirtualList } from '@satorijs/ui-virtual'
+import { ChatInput, VirtualList } from '@satorijs/components'
 import { currentUser, characters, getTranslation, Message } from '../utils'
 import { useI18n } from 'vue-i18n'
 import ChatMessage from './Message.vue'
